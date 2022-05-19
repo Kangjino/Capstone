@@ -76,7 +76,6 @@
         android:layout_below="@id/registerBtn"
         android:layout_marginTop="30dp"
         android:text="이미 아이디가 있으시다면 로그인하세요!"
-        android:textAlignment="center"
         android:textColor="@color/colorBlack" />
 
 </RelativeLayout>

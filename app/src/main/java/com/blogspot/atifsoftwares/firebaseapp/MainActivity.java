@@ -11,23 +11,23 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 //commit test
     //views
-    Button mRegisterBtn, mLoginBtn;
+    Button mRegisterBtn, mLoginBtn; // 회원가입 버튼, 로그인버튼 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // 프로그램 실행시 액티비티 메인 시작
 
         //init views
-        mRegisterBtn = findViewById(R.id.register_btn);
-        mLoginBtn = findViewById(R.id.login_btn);
+        mRegisterBtn = findViewById(R.id.register_btn); // ID찾아와주고
+        mLoginBtn = findViewById(R.id.login_btn);// ID 찾아와주고
 
         //handle register button click
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //start RegisterActivity
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class)); // MainActivity에서 회원가입으로 이동
             }
         });
         //handle login button click
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //start LoginActivity
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class)); // MainActivity에서 로그인액티비티로 이동
             }
         });
     }

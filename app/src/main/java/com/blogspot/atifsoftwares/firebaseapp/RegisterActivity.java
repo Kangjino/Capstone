@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Actionbar and its title
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Create Account");
+        actionBar.setTitle("계정 생성");
         //enable back button
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Registering User...");
+        progressDialog.setMessage("회원가입중...");
 
 
         //handle register btn click
@@ -72,11 +72,11 @@ public class RegisterActivity extends AppCompatActivity {
                 //validate
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     //set error and focuss to email edittext
-                    mEmailEt.setError("Invalid Email");
+                    mEmailEt.setError("유효하지 않은 이메일입니다.");
                     mEmailEt.setFocusable(true);
                 } else if (password.length() < 6) {
                     //set error and focuss to password edittext
-                    mPasswordEt.setError("Password length at least 6 characters");
+                    mPasswordEt.setError("패스워드는 최소 6글자 이상으로 설정해주세요");
                     mPasswordEt.setFocusable(true);
                 } else {
                     registerUser(email, password); //register the user

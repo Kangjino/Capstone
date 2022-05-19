@@ -39,7 +39,7 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 100;
-    GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInClient mGoogleSignInClient; // 구글 로그인 사용을 위한 코드
 
     //views
     EditText mEmailEt, mPasswordEt;
@@ -60,14 +60,14 @@ public class LoginActivity extends AppCompatActivity {
 
         //Actionbar and its title
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Login");
+        actionBar.setTitle("모여라 동아리"); // 타이틀 설정 "모여라동아리"
         //enable back button
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
 
         //before mAuth
-        // Configure Google Sign In
+        // 구글 로그인 코드
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -84,33 +84,33 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn = findViewById(R.id.loginBtn);
         mGoogleLoginBtn = findViewById(R.id.googleLoginBtn);
 
-        //login button click
+        //로그인 버튼 클릭시
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //input data
-                String email = mEmailEt.getText().toString();
-                String passw = mPasswordEt.getText().toString().trim();
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    //invalid email paatern set error
-                    mEmailEt.setError("Invalid Email");
+                String email = mEmailEt.getText().toString(); // 작성된 email 가져오기
+                String passw = mPasswordEt.getText().toString().trim(); // 작성된 패스워드 가져오기 , trim:공백을 제거
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){ // 기존의 이메일패턴 xxx@xxx.xxx 와 다르다면
+                    //올바르지 않은 이메일 패턴
+                    mEmailEt.setError("잘못된 형식의 이메일입니다.");
                     mEmailEt.setFocusable(true);
                 }
                 else {
-                    //valid email pattern
+                    //올바른 이메일 패턴
                     loginUser(email, passw);
                 }
             }
         });
-        //not have accoun textview click
+        //회원가입 버튼 클릭시
         notHaveAccntTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                finish();
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class)); // 로그인창에서 회원가입창으로 이동
+                finish(); // startActivity로 시작한 액티비티 종료
             }
         });
-        //recover pass textview click
+        //비밀번호 재설정
         mRecoverPassTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //handle google login btn click
+        //구글 로그인
         mGoogleLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,17 +132,17 @@ public class LoginActivity extends AppCompatActivity {
         pd = new ProgressDialog(this);
     }
 
-    private void showRecoverPasswordDialog() {
+    private void showRecoverPasswordDialog() { // 비밀번호 재설정시 나타나는 Dialog
         //AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Recover Password");
+        builder.setTitle("비밀번호 재설정을 위해 이메일을 입력해주세요!");
 
         //set layout linear layout
         LinearLayout linearLayout = new LinearLayout(this);
         //views to set in dialog
         final EditText emailEt = new EditText(this);
-        emailEt.setHint("Email");
-        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        emailEt.setHint("Email");//힌트
+        emailEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS); // 이메일 형식만 입력가능
         /*sets the min width of a EditView to fit a text of n 'M' letters regardless of the actual text
         extension and text size.*/
         emailEt.setMinEms(16);
@@ -153,21 +153,21 @@ public class LoginActivity extends AppCompatActivity {
 
         builder.setView(linearLayout);
 
-        //buttons recover
-        builder.setPositiveButton("Recover", new DialogInterface.OnClickListener() {
+        //보내기버튼
+        builder.setPositiveButton("보내기", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //input email
                 String email = emailEt.getText().toString().trim();
-                beginRecovery(email);
+                beginRecovery(email); // 이메일을 보낸다
             }
         });
         //buttons cancel
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //dismiss dialog
-                dialog.dismiss();
+                dialog.dismiss(); // dialog 종료
             }
         });
 
@@ -177,18 +177,18 @@ public class LoginActivity extends AppCompatActivity {
 
     private void beginRecovery(String email) {
         //show progresss dialog
-        pd.setMessage("Sending email...");
+        pd.setMessage("이메일 보내는중...");
         pd.show();
         mAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 pd.dismiss();
-                if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this, "Email sent", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()){ // 이메일 전송 성공시
+                    Toast.makeText(LoginActivity.this, "전송 완료! 메일을 확인해주세요", Toast.LENGTH_SHORT).show();
                 }
-                else {
-                    Toast.makeText(LoginActivity.this, "Failed...", Toast.LENGTH_SHORT).show();
+                else { // 전송 실패시
+                    Toast.makeText(LoginActivity.this, "전송 실패..! 다시 확인해주세요", Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -203,7 +203,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String email, String passw) {
         //show progresss dialog
-        pd.setMessage("Logging In...");
+        pd.setMessage("로그인 하는중...");
         pd.show();
         mAuth.signInWithEmailAndPassword(email, passw)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -211,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //dismiss progress dialog
-                            pd.dismiss();
+                            pd.dismiss(); // 다이어로그 종료
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             //user is logged in, so start LoginActivity
@@ -221,7 +221,7 @@ public class LoginActivity extends AppCompatActivity {
                             //dismiss progress dialog
                             pd.dismiss();
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                            Toast.makeText(LoginActivity.this, "인증실패, 모여라 동아리의 비밀번호를 다시 확인해주세요",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -261,7 +261,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) { // 구
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -300,7 +300,7 @@ public class LoginActivity extends AppCompatActivity {
                             //show user email in toast
                             Toast.makeText(LoginActivity.this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
                             //go to profile activity after logged in
-                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                            startActivity(new Intent(LoginActivity.this, DashboardActivity.class)); // 로그인 성공시 대쉬보드액티비티로 화면이동
                             finish();
                             //updateUI(user);
                         } else {

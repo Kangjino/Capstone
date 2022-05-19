@@ -70,14 +70,17 @@
 
     <!--TextView: Show dialog to recover password-->
     <TextView
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:id="@+id/recoverPassTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="비밀번호를 잊어버리셨다면 이쪽으로!"
         android:layout_below="@id/loginBtn"
-        android:textColor="@color/colorBlack"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:text="비밀번호 재설정"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack" />
 
     <!--GoogleSignInBtn: Sign in with google account-->
     <com.google.android.gms.common.SignInButton
@@ -92,7 +95,7 @@
         android:id="@+id/nothave_accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Not have account? Register"
+        android:text="모여라 동아리 계정이 없으시다면 지금 바로 등록하세요!"
         android:textAlignment="center"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"

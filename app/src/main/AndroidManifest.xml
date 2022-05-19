@@ -13,7 +13,7 @@
         android:roundIcon="@drawable/icon_logo4"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".SettingsActivity" />
         <activity android:name=".PostDetailActivity" />
         <activity android:name=".ThereProfileActivity" />
         <activity android:name=".AddPostActivity" />
@@ -31,6 +31,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AddMindpostActivity" />
+
         <service
             android:name=".notifications.FirebaseMessaging"
             android:enabled="true"

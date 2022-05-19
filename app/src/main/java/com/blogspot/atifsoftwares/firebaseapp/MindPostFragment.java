@@ -86,7 +86,7 @@ public class MindPostFragment extends Fragment {
         return view;
     }
 
-    //그동안의 마인드 포스트 로드 :이소연
+    //그동안의 마인드 포스트 로드
     private void loadMindPosts() {
         //path of all posts
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("MindPosts");
@@ -98,13 +98,13 @@ public class MindPostFragment extends Fragment {
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     ModelMindpost modelMindpost = ds.getValue(ModelMindpost.class);
 
-                    MindpostList.add(modelMindpost);  //포스트잇 구성 내용을 리스트에 넣음 :이소연
+                    MindpostList.add(modelMindpost);  //포스트잇 구성 내용을 리스트에 넣음
 
                     //포스트잇 한장을 생성시킴 :이소연
                     adapterMindposts = new AdapterMindposts(getActivity(), MindpostList);
 
                     //set adapter to recyclerview
-                    recyclerView.setAdapter(adapterMindposts);   //포스트잇 한장을 recyclerViewd에 넣음 :이소연
+                    recyclerView.setAdapter(adapterMindposts);   //포스트잇 한장을 recyclerViewd에 넣음
                 }
             }
 
@@ -172,7 +172,7 @@ public class MindPostFragment extends Fragment {
 
 
     }
-    /*inflate options menu  -->메뉴바 옵션바:이소연*/
+    /*inflate options menu  -->메뉴바 옵션바*/
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //inflating menu

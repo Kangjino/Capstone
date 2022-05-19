@@ -17,9 +17,10 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    SwitchCompat postSwitch;
+    SwitchCompat postSwitch; // swtichCompat : 설정 -> 게시글알림에 있는 on off버튼을 위한 스위치
 
     //use shared preferences to save the state of Switch
+    //SharedPreferences는 데이터를 파일로 저장을 하는데요, 파일이 앱 폴더 내에 저장되므로 앱을 삭제하시면 당연히 데이터도 삭제됩니다.
     SharedPreferences sp;
     SharedPreferences.Editor editor; //to edit value of shared pref
 
@@ -29,10 +30,10 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
-
+        setContentView(R.layout.activity_settings); // activity_settings.xml을 가져온다
+        //Actionbar은 액티비티 위젯중 하나로 위에 떠있는것
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Settings");
+        actionBar.setTitle("설정");
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
@@ -52,7 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         //implement switch change listener
         postSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { // 포스트 알림을 받기위한 코드
                 //edit switch state
                 editor = sp.edit();
                 editor.putBoolean(""+TOPIC_POST_NOTIFICATION, isChecked);
@@ -66,6 +67,8 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        // 여기다가 설정 장현이 코드를 가져온다
     }
 
     @Override
@@ -74,13 +77,13 @@ public class SettingsActivity extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
-    private void unsubscribePostNotification() {
+    private void unsubscribePostNotification() { // 스위치컴팻 ON상태
         //unsubscribe to a topic (POST) to disable it's notification
         FirebaseMessaging.getInstance().unsubscribeFromTopic(""+TOPIC_POST_NOTIFICATION)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "You will not receive post notifications";
+                        String msg = "모여라 동아리 동아리 홍보 알림을 받지 않습니다.";
                         if (!task.isSuccessful()){
                             msg = "UnSubscription failed";
                         }
@@ -89,13 +92,13 @@ public class SettingsActivity extends AppCompatActivity {
                 });
     }
 
-    private void subscribePostNotification() {
+    private void subscribePostNotification() { // 스위치컴팻 ON상태
         //subscribe to a topic (POST) to enable it's notification
         FirebaseMessaging.getInstance().subscribeToTopic(""+TOPIC_POST_NOTIFICATION)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "You will receive post notifications";
+                        String msg = "모여라 동아리 동아리 홍보 알림을 받습니다.";
                         if (!task.isSuccessful()){
                             msg = "Subscription failed";
                         }
