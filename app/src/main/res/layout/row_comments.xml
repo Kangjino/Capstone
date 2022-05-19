@@ -21,13 +21,13 @@
 
         <TextView
             android:id="@+id/nameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_toRightOf="@id/avatarIv"
-            android:text="Atif"
+            android:text="이름"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/commentTv"
@@ -35,9 +35,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/nameTv"
             android:layout_toEndOf="@id/avatarIv"
-            android:text="This is actual comment"
             android:layout_toRightOf="@id/avatarIv"
-            android:textColor="@color/colorBlack"/>
+            android:text="댓글을 적어주세요"
+            android:textColor="@color/colorBlack" />
 
         <TextView
             android:id="@+id/timeTv"

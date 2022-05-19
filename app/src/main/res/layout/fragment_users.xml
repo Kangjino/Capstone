@@ -10,7 +10,7 @@
         android:id="@+id/users_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <!-- 장성원: 사용자 목록 화면에서 랜덤채팅으로 가는 버튼 구현-->
+    <!-- 모여라 동아리 : 사용자 목록 화면에서 랜덤채팅으로 가는 버튼 구현-->
     <!-- TODO: 해결완료 -->
     <ImageButton
         android:id="@+id/randomchatbtn"

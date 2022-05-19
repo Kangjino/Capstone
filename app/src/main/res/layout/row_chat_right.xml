@@ -31,17 +31,17 @@
 
         <TextView
             android:id="@+id/messageTv"
-            android:textSize="16sp"
-            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@id/timeTv"
+            android:layout_toRightOf="@id/timeTv"
             android:background="@drawable/bg_sender"
             android:padding="15dp"
             android:text="His Message"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@id/timeTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/timeTv" />
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/messageIv"

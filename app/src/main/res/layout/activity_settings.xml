@@ -16,7 +16,7 @@
             android:id="@+id/postSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Notifications"/>
+            android:text="게시글 알림"/>
 
     </androidx.cardview.widget.CardView>
 

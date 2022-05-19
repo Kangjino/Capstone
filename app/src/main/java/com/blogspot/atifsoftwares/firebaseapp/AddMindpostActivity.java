@@ -179,7 +179,7 @@ public class AddMindpostActivity extends AppCompatActivity {
                 //flag = 0;
                 Aname = "anonymouse"; //gy : 이름을 익명으로 만들어줌
                 //anonymouseBtn.setText("user name"); // gy : 버튼 내용을 바꿔줌
-                Toast.makeText(AddMindpostActivity.this, "name is anonymouse...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddMindpostActivity.this, "익명으로 작성합니다", Toast.LENGTH_SHORT).show();
                 // } 버튼 하나로 하려 했으나 실패....
 //                else if(flag == 0) {
 //                    flag = 1;
@@ -196,7 +196,7 @@ public class AddMindpostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Aname = name;
-                Toast.makeText(AddMindpostActivity.this, "name is yourname...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddMindpostActivity.this, "이름으로 작성합니다", Toast.LENGTH_SHORT).show();
             }
         });
 

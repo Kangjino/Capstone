@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "68955392220",
-    "firebase_url": "https://modazal-c6a35.firebaseio.com",
-    "project_id": "modazal-c6a35",
-    "storage_bucket": "modazal-c6a35.appspot.com"
+    "project_number": "330616880341",
+    "project_id": "anonymous-sns-project",
+    "firebase_url": "https://anonymous-sns-project-default-rtdb.firebaseio.com",
+    "storage_bucket": "anonymous-sns-project.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:68955392220:android:8c44734fd078128c650c19",
+        "mobilesdk_app_id": "1:330616880341:android:e821fb48c7e932c903b65c",
         "android_client_info": {
           "package_name": "com.blogspot.atifsoftwares.firebaseapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "68955392220-18hbbgjegqjbbku6dali7s6049fu3mut.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.blogspot.atifsoftwares.firebaseapp",
-            "certificate_hash": "6b631fd7c44ea0b21f85d0b85f84fcd299e7a1a2"
-          }
-        },
-        {
-          "client_id": "68955392220-a2uq01dtge52u8fitvv7f41v3p90cnhh.apps.googleusercontent.com",
+          "client_id": "330616880341-6608r3ghj8udnoj4s9t7fmf65tu3t6bk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBrcEgfb9OneKxXurfCQjaLsmqtbixD5g8"
+          "current_key": "AIzaSyCnmjtpy9-HunHraPh3Zu80RKT8XvtvDsw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "68955392220-a2uq01dtge52u8fitvv7f41v3p90cnhh.apps.googleusercontent.com",
+              "client_id": "330616880341-6608r3ghj8udnoj4s9t7fmf65tu3t6bk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

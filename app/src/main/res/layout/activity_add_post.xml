@@ -17,7 +17,7 @@
             android:id="@+id/pTitleEt"
             android:background="@drawable/editextstyle"
             android:padding="10dp"
-            android:hint="Enter title"
+            android:hint="제목을 입력하세요!"
             android:singleLine="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -35,7 +35,7 @@
             android:id="@+id/pDescriptionEt"
             android:background="@drawable/editextstyle"
             android:padding="10dp"
-            android:hint="Enter description"
+            android:hint="내용을 입력하세요!"
             android:inputType="textCapSentences|textMultiLine"
             android:minHeight="120dp"
             android:gravity="start"
@@ -51,7 +51,8 @@
         <Button
             android:id="@+id/pUploadBtn"
             android:background="#D3FF5722"
-            android:text="Upload"
+            android:text="업로드"
+            android:textStyle="bold"
             android:layout_gravity="end"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -60,7 +61,8 @@
             <Button
                 android:id="@+id/pAnonymouseBtn"
                 android:background="#D3FF5722"
-                android:text="Anonymouse"
+                android:text="익명설정"
+                android:textStyle="bold"
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
@@ -69,7 +71,8 @@
             <Button
                 android:id="@+id/pUsernameBtn"
                 android:background="#D3FF5722"
-                android:text="Username"
+                android:text="이름설정"
+                android:textStyle="bold"
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -17,28 +17,28 @@
     <!--Button: Register-->
     <Button
         android:id="@+id/register_btn"
-        android:background="#D3FF5722"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/login_btn"
         android:layout_centerHorizontal="true"
+        android:background="#D3FF5722"
         android:drawableStart="@drawable/ic_register_white"
         android:drawableLeft="@drawable/ic_register_white"
         android:minWidth="230dp"
-        android:text="Register" />
+        android:text="회원가입" />
 
     <!--Button: Login-->
     <Button
         android:id="@+id/login_btn"
-        android:background="#D3FF5722"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp"
+        android:background="#D3FF5722"
         android:drawableStart="@drawable/ic_login_white"
         android:drawableLeft="@drawable/ic_login_white"
         android:minWidth="230dp"
-        android:text="Login" />
+        android:text="로그인" />
 
 </RelativeLayout>

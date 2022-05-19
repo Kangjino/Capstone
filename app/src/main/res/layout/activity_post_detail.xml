@@ -52,7 +52,7 @@
                             android:layout_weight="1">
                             <TextView
                                 android:id="@+id/uNameTv"
-                                android:text="Name"
+                                android:text="이름"
                                 android:textColor="@color/colorBlack"
                                 android:textSize="20sp"
                                 android:layout_width="wrap_content"
@@ -80,11 +80,11 @@
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="Title"
+                        android:text="제목"
                         android:autoLink="all"/>
                     <TextView
                         android:id="@+id/pDescriptionTv"
-                        android:text="The description of the post"
+                        android:text="설명을 적어주세요!"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -136,7 +136,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="LIKE"
+                            android:text="좋아요"
+                            android:textStyle="bold"
                             android:drawableLeft="@drawable/ic_like_black"
                             android:background="@color/colorWhite"
                             android:drawablePadding="5dp"
@@ -147,7 +148,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="SHARE"
+                            android:text="공유"
+                            android:textStyle="bold"
                             android:drawableLeft="@drawable/ic_share_black"
                             android:drawablePadding="5dp"
                             android:background="@color/colorWhite"
@@ -160,7 +162,7 @@
 
             <!--List of comments here: will do in next part-->
             <TextView
-                android:text="Comments"
+                android:text="댓글"
                 android:textColor="@color/colorBlack"
                 android:drawablePadding="5dp"
                 android:padding="2dp"

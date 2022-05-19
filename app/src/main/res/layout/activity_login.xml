@@ -12,12 +12,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_marginTop="30dp"
+        android:text="로그인"
         android:textAlignment="center"
         android:textColor="#D3FF5722"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginTop="30dp"
-        android:textSize="25sp" />
+        android:gravity="center_horizontal" />
 
     <!--EditText: Input Email-->
     <com.google.android.material.textfield.TextInputLayout
@@ -58,14 +59,14 @@
     <!--Button: Register User-->
     <Button
         android:id="@+id/loginBtn"
-        android:background="#D3FF5722"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordTIL"
         android:layout_centerHorizontal="true"
+        android:background="#D3FF5722"
         android:drawableLeft="@drawable/ic_login_white"
         android:drawablePadding="5dp"
-        android:text="Login" />
+        android:text="로그인" />
 
     <!--TextView: Show dialog to recover password-->
     <TextView
@@ -73,18 +74,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:text="Forgot Password? Recover"
+        android:text="비밀번호를 잊어버리셨다면 이쪽으로!"
         android:layout_below="@id/loginBtn"
-        android:textColor="@color/colorBlack"/>
+        android:textColor="@color/colorBlack"
+        android:gravity="center_horizontal" />
 
     <!--GoogleSignInBtn: Sign in with google account-->
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleLoginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/recoverPassTv">
-    </com.google.android.gms.common.SignInButton>
+        android:layout_below="@id/recoverPassTv"
+        android:layout_centerHorizontal="true"></com.google.android.gms.common.SignInButton>
 
     <!--TextView: Click go to RegisterActivity-->
     <TextView
@@ -96,6 +97,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
         android:textColor="@color/colorBlack"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal" />
 
 </RelativeLayout>
