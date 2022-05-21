@@ -105,10 +105,10 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyHolder> {
             public void onClick(View v) {
                 //show delete message confirm dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Delete");
-                builder.setMessage("Are you sure to delete this message?");
+                builder.setTitle("삭제");
+                builder.setMessage("댓글을 지우시겠습니까?");
                 //delete button
-                builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -116,7 +116,7 @@ public class AdapterChat extends RecyclerView.Adapter<AdapterChat.MyHolder> {
                     }
                 });
                 //cancel delete button
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //dismiss dialog

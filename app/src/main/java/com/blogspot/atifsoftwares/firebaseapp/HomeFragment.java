@@ -221,8 +221,8 @@ public class HomeFragment extends Fragment {
             //go to settings activity
             startActivity(new Intent(getActivity(), SettingsActivity.class)); // SettingActivity로 이동
         }
-        else if (id==R.id.action_settings) { // 이력서 작성 버튼
-            startActivity(new Intent(getActivity(), SettingsActivity.class)); // SettingActivity로 이동
+        else if (id==R.id.action_resume) { // 이력서 작성 버튼
+            startActivity(new Intent(getActivity(), UserResumeActivity.class)); // UserResumeActivity로 이동
         }
 
         return super.onOptionsItemSelected(item);

@@ -83,16 +83,16 @@ public class AdapterComments extends RecyclerView.Adapter<AdapterComments.MyHold
                     //my comment
                     //show delete dialog
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
-                    builder.setTitle("Delete");
-                    builder.setMessage("Are you sure to delete this comment?");
-                    builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    builder.setTitle("삭제");
+                    builder.setMessage("댓글을 지우시겠습니까?");
+                    builder.setPositiveButton("삭제", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //delete comment
                             deleteComment(cid);
                         }
                     });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //dismiss dialog
@@ -104,7 +104,7 @@ public class AdapterComments extends RecyclerView.Adapter<AdapterComments.MyHold
                 }
                 else {
                     //not my comment
-                    Toast.makeText(context, "Can't delete other's comment...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "다른사람의 댓글은 지울수없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
         });

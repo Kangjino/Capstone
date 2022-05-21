@@ -74,13 +74,13 @@ public class UsersFragment extends Fragment {
         //getAll users
         getAllUsers();
 
-        //김건호 버튼초기화
+
         btn=(ImageButton)view.findViewById(R.id.randomchatbtn);
         btn.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View view)
-            {//gunho : randomchat call
+            {
                 adapterRandomUsers = new AdapterRandomUsers(getActivity(), userList);
             }
         });

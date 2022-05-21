@@ -115,12 +115,12 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_post);
 
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Add New Post");// gy :작성 화면에 상단 제목
+        actionBar.setTitle("게시글 작성");// gy :작성 화면에 상단 제목
         //enable back button in actionbar
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        //init permissions arrays
+        //카메라와 저장공간 접근허용
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 

@@ -7,12 +7,19 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@drawable/icon_logo4"
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon_logo4"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ClubHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserResumeActivity"
+            android:exported="false" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".PostDetailActivity" />
         <activity android:name=".ThereProfileActivity" />
@@ -21,7 +28,8 @@
             android:name=".ChatActivity"
             android:theme="@style/AppThemeNo" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".DashboardActivity">
+        <activity android:name=".DashboardActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

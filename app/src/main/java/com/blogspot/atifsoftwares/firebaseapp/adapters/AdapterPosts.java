@@ -285,7 +285,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                     Change drawable left icon of like button
                     Change text of like button from "Like" to "Liked"*/
                     holder.likeBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_liked, 0,0,0);
-                    holder.likeBtn.setText("Liked");
+                    holder.likeBtn.setText("좋아요!");
                 }
                 else {
                     //user has not liked this post
@@ -293,7 +293,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                     Change drawable left icon of like button
                     Change text of like button from "Liked" to "Like"*/
                     holder.likeBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like_black, 0,0,0);
-                    holder.likeBtn.setText("Like");
+                    holder.likeBtn.setText("좋아요");
                 }
             }
 
@@ -384,7 +384,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                                     ds.getRef().removeValue(); // remove values from firebase where pid matches
                                 }
                                 //deleted
-                                Toast.makeText(context, "Deleted successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "삭제되었습니다", Toast.LENGTH_SHORT).show();
                                 pd.dismiss();
                             }
 
@@ -418,7 +418,7 @@ public class AdapterPosts extends RecyclerView.Adapter<AdapterPosts.MyHolder> {
                     ds.getRef().removeValue(); // remove values from firebase where pid matches
                 }
                 //deleted
-                Toast.makeText(context, "Deleted successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "삭제되었습니다", Toast.LENGTH_SHORT).show();
                 pd.dismiss();
             }
 
