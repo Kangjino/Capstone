@@ -70,17 +70,17 @@
 
     <!--TextView: Show dialog to recover password-->
     <TextView
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
         android:id="@+id/recoverPassTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/loginBtn"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center_horizontal"
-        android:textStyle="bold"
         android:text="비밀번호 재설정"
         android:textAlignment="center"
-        android:textColor="@color/colorBlack" />
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold" />
 
     <!--GoogleSignInBtn: Sign in with google account-->
     <com.google.android.gms.common.SignInButton

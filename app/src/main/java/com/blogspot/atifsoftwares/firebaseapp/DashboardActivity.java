@@ -89,14 +89,7 @@ public class DashboardActivity extends AppCompatActivity {
                             ft2.replace(R.id.content, fragment2, "");
                             ft2.commit();
                             return true;
-                        case R.id.nav_users:
-                            //users fragment transaction
-                            actionBar.setTitle("유저");//change actionbar title
-                            UsersFragment fragment3 = new UsersFragment();
-                            FragmentTransaction ft3 = getSupportFragmentManager().beginTransaction();
-                            ft3.replace(R.id.content, fragment3, "");
-                            ft3.commit();
-                            return true;
+
                         case R.id.nav_chat:
                             //users fragment transaction
                             actionBar.setTitle("채팅");//change actionbar title
@@ -105,7 +98,17 @@ public class DashboardActivity extends AppCompatActivity {
                             ft4.replace(R.id.content, fragment4, "");
                             ft4.commit();
                             return true;
-                       case R.id.nav_mindpost:
+
+                        case R.id.nav_club:
+                            //users fragment transaction
+                            actionBar.setTitle("동아리");//change actionbar title
+                            ClubFragment fragment6 = new ClubFragment();
+                            FragmentTransaction ft6 = getSupportFragmentManager().beginTransaction();
+                            ft6.replace(R.id.content, fragment6, "");
+                            ft6.commit();
+                            return true;
+
+                        case R.id.nav_mindpost:
                             //users fragment transaction
                             actionBar.setTitle("오늘의 한마디");//change actionbar title
                             MindPostFragment fragment5 = new MindPostFragment();

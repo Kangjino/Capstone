@@ -1,14 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/book2"
+    android:orientation="vertical"
     tools:context=".ClubFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/button1"
+        android:text="동아리 개설"
+        android:textStyle="bold"
+        android:textSize="40dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="80dp"
+        />
+    <Button
+        android:id="@+id/button2"
+        android:text="동아리 검색"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        />
+    <Button
+        android:id="@+id/button3"
+        android:text="동아리 구경"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        />
+    <Button
+        android:id="@+id/button4"
+        android:text="내 동아리"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        />
 
-</FrameLayout>
+
+</LinearLayout>
+

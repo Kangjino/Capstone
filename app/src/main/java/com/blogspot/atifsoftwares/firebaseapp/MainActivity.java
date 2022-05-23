@@ -2,6 +2,7 @@ package com.blogspot.atifsoftwares.firebaseapp;
 
 import android.content.Intent;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,12 +13,13 @@ public class MainActivity extends AppCompatActivity {
 //commit test
     //views
     Button mRegisterBtn, mLoginBtn; // 회원가입 버튼, 로그인버튼 선언
-
+    ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // 프로그램 실행시 액티비티 메인 시작
-
+        actionBar = getSupportActionBar();
+        actionBar.setTitle("모여라 동아리에 오신걸 환영합니다");
         //init views
         mRegisterBtn = findViewById(R.id.register_btn); // ID찾아와주고
         mLoginBtn = findViewById(R.id.login_btn);// ID 찾아와주고

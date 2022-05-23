@@ -92,7 +92,7 @@ public class AddMindpostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_mindpost);
 
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Add New MindPost");// gy :작성 화면에 상단 제목
+        actionBar.setTitle("모여라 동아리에게 응원을 남겨주세요!");// gy :작성 화면에 상단 제목
         //enable back button in actionbar
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -124,8 +124,8 @@ public class AddMindpostActivity extends AppCompatActivity {
         }
         else { // 작성시
             //add
-            actionBar.setTitle("Add New Post");
-            uploadBtn.setText("Upload");
+            actionBar.setTitle("게시글 작성");
+            uploadBtn.setText("업로드");
             Aname = name;
         }
 

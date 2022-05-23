@@ -88,7 +88,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
         //Actionbar and its properties
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Post Detail");
+        actionBar.setTitle("게시글 삭제");
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 

@@ -1,5 +1,7 @@
 package com.blogspot.atifsoftwares.firebaseapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,12 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ClubFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+
 public class ClubFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +30,7 @@ public class ClubFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     public ClubFragment() {
         // Required empty public constructor
@@ -53,12 +61,34 @@ public class ClubFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_club, container, false);
+        View v = inflater.inflate(R.layout.fragment_club, container, false);
+        Button btn = v.findViewById(R.id.button1);
+        Button btn2 = v.findViewById(R.id.button2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getActivity(), ClubMake.class);
+                startActivity(intent2);
+
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getActivity(), ClubPreviousSelect.class);
+                startActivity(intent2);
+
+            }
+        });
+        return v;
     }
 }

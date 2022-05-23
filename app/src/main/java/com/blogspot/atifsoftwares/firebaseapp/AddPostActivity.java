@@ -147,14 +147,14 @@ public class AddPostActivity extends AppCompatActivity {
         //validate if we came here to update post i.e. came from AdapterPost
         if (isUpdateKey.equals("editPost")){// gy :수정시
             //update
-            actionBar.setTitle("Update Post");
-            uploadBtn.setText("Update");
+            actionBar.setTitle("게시글 수정");
+            uploadBtn.setText("수정");
             loadPostData(editPostId);
         }
         else { // 작성시
             //add
-            actionBar.setTitle("Add New Post");
-            uploadBtn.setText("Upload");
+            actionBar.setTitle("게시글 작성");
+            uploadBtn.setText("업로드");
             Aname = name;
         }
 

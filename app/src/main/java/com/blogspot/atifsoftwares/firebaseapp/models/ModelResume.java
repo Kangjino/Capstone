@@ -12,6 +12,7 @@ public class ModelResume {
     String Department_Number;
     String Hobby;
     String Speciality;
+    String Sex;
 
     public String getSex() {
         return Sex;
@@ -21,7 +22,7 @@ public class ModelResume {
         Sex = sex;
     }
 
-    String Sex;
+
 
     public ModelResume(){}
 

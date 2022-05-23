@@ -326,11 +326,11 @@ public class ProfileFragment extends Fragment {
          * 4) Edit Phone*/
 
         //options to show in dialog
-        String options[] = {"Edit Profile Picture", "Edit Cover Photo", "Edit Name", "Edit Phone"};
+        String options[] = {"프로필 사진", "배경 사진", "이름 변경", "휴대폰 번호", "이력서 관리"};
         //alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         //set title
-        builder.setTitle("Choose Action");
+        builder.setTitle("개인 정보 관리");
         //set items to dialog
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
@@ -355,7 +355,11 @@ public class ProfileFragment extends Fragment {
                     //Edit Phone clicked
                     pd.setMessage("Updating Phone");
                     showNamePhoneUpdateDialog("phone");
+                }else if (which == 4) {
+                    //Edit Phone clicked
+                    startActivity(new Intent(getActivity(), UserResumeActivity.class));
                 }
+
             }
         });
         //create and show dialog
