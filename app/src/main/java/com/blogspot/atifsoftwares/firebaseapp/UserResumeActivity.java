@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,9 +36,10 @@ import android.content.DialogInterface;
 
 
 public class UserResumeActivity extends AppCompatActivity {
-
+    String uid;
     //파이어 베이스 데이터 연동을 위한 코드
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
     //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
     //현재 연결은 데이터베이스에만 딱 연결해놓고
@@ -47,7 +50,7 @@ public class UserResumeActivity extends AppCompatActivity {
     EditText Title, Name, Grade, Department, Old, Department_Number, Hobby, Speciality, Sex;
     String Title2, Name2, Grade2, Department2, Old2, Department_Number2, Hobby2, Speciality2;
     String Sex2;
-    String Key;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,11 @@ public class UserResumeActivity extends AppCompatActivity {
         Hobby = findViewById(R.id.Hobby);
         Speciality = findViewById(R.id.Speciality);
         Sex = findViewById(R.id.Sex);
+        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        //get path of database named "Users" containing users info
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        uid = fUser.getUid();
+
 
 
 
@@ -86,7 +94,7 @@ public class UserResumeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addResume(Title.getText().toString(), Name.getText().toString(),Grade.getText().toString(),Department.getText().toString(),
                         Old.getText().toString(),Department_Number.getText().toString(), Hobby.getText().toString(), Speciality.getText().toString()
-                , Sex.getText().toString());
+                , Sex.getText().toString(), uid);
 
                 Toast.makeText(getApplicationContext(), "회원 이력서 저장이 성공적으로 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
@@ -97,20 +105,10 @@ public class UserResumeActivity extends AppCompatActivity {
             }
         });
 
-        btn_load.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                if(Department_Number.getText().toString().length() == 0) {
-                    Toast.makeText(getApplicationContext(), "학번을 입력해야만 불러오기가 가능합니다.", Toast.LENGTH_SHORT).show();
-                }
 
-                else if(Department_Number.getText().toString().length() != 8) {
-                    Toast.makeText(getApplicationContext(), "8자리 학번을 입력해주세요", Toast.LENGTH_SHORT).show();
-                }
 
-                else {
-                    databaseReference.child("Resume_management").child(Department_Number.getText().toString()).addValueEventListener(new ValueEventListener() {
+                    databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             ModelResume group = dataSnapshot.getValue(ModelResume.class);
@@ -137,7 +135,7 @@ public class UserResumeActivity extends AppCompatActivity {
                             Sex.setText(Sex2);
 
 
-                                Toast.makeText(getApplicationContext(), "이력서 정보를 성공적으로 불러왔습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "회원 이력서 불러오기가 성공적으로 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -146,11 +144,6 @@ public class UserResumeActivity extends AppCompatActivity {
                             //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
                         }
                     });
-                }
-
-
-            }
-        });
 
 
         // 나가기 버튼을 눌렀을때 홈 화면으로 이동
@@ -168,10 +161,10 @@ public class UserResumeActivity extends AppCompatActivity {
     }
 
     public void addResume(String Title, String Name, String Grade, String Department, String Old, String Department_Number, String Hobby, String Speciality
-                          , String Sex) {
-        ModelResume resume = new ModelResume(Title, Name, Grade, Department, Old, Department_Number, Hobby, Speciality, Sex);
+                          , String Sex, String uid) {
+        ModelResume resume = new ModelResume(Title, Name, Grade, Department, Old, Department_Number, Hobby, Speciality, Sex, uid);
 
-        databaseReference.child("Resume_management").child(Department_Number).setValue(resume);
+        databaseReference.child("Resume_management").child(uid).setValue(resume);
     }
 
 }

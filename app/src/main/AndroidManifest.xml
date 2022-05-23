@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Authentication"
+            android:exported="false" />
+        <activity
             android:name=".ClubSelect5"
             android:exported="false" />
         <activity
@@ -34,7 +37,6 @@
         <activity
             android:name=".ClubMake"
             android:exported="false" />
-
         <activity
             android:name=".UserResumeActivity"
             android:exported="false" />

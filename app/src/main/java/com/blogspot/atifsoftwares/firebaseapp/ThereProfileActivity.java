@@ -49,8 +49,9 @@ public class ThereProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_there_profile);
 
+        //앱위 상단바 띄우는 action bar 코드
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Profile");
+        actionBar.setTitle("프로필");
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -62,11 +63,11 @@ public class ThereProfileActivity extends AppCompatActivity {
         phoneTv = findViewById(R.id.phoneTv);
         postsRecyclerView = findViewById(R.id.recyclerview_posts);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance(); // 파이어베이스 객체 선언
 
         //get uid of clicked user to retrieve his posts
         Intent intent = getIntent();
-        uid = intent.getStringExtra("uid");
+        uid = intent.getStringExtra("uid"); // 다른액티비티에서 uid를 가져온다
 
 
         Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("uid").equalTo(uid);
@@ -204,7 +205,7 @@ public class ThereProfileActivity extends AppCompatActivity {
     }
 
     private void checkUserStatus(){
-        //get current user
+        // FirebaseAuth 객체를 통해 현재 로그인한 사용자 가져오기
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null){
             //user is signed in stay here

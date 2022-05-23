@@ -2,8 +2,14 @@ package com.blogspot.atifsoftwares.firebaseapp.models;
 
 import android.provider.MediaStore;
 import android.widget.RadioButton;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class ModelResume {
+
     String Title;
     String Name;
     String Grade;
@@ -11,6 +17,16 @@ public class ModelResume {
     String Old;
     String Department_Number;
     String Hobby;
+    String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
     String Speciality;
     String Sex;
 
@@ -94,7 +110,13 @@ public class ModelResume {
     }
 
     public ModelResume(String title, String name, String grade, String department, String old, String department_Number, String hobby, String speciality
-                       ,String sex) {
+                       ,String sex, String uid) {
+        FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance(); // 파이어베이스 객체 선언
+        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+        //get path of database named "Users" containing users info
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+
         Title = title;
         Name = name;
         Grade = grade;
@@ -104,6 +126,8 @@ public class ModelResume {
         Hobby = hobby;
         Speciality = speciality;
         Sex = sex;
+        uid = fUser.getUid();
+
 
     }
 }

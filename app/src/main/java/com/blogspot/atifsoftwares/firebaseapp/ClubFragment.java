@@ -72,6 +72,7 @@ public class ClubFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_club, container, false);
         Button btn = v.findViewById(R.id.button1);
         Button btn2 = v.findViewById(R.id.button2);
+        Button btn3 = v.findViewById(R.id.button3);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +90,15 @@ public class ClubFragment extends Fragment {
 
             }
         });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(getActivity(), Authentication.class);
+                startActivity(intent3);
+            }
+        });
+
         return v;
     }
 }
