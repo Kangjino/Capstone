@@ -1,17 +1,10 @@
 package com.blogspot.atifsoftwares.firebaseapp.models;
 
 public class ModelClub {
-    String Club_Title, Club_Name, Club_Introduce, Club_Rule, Club_Harmoney;
+    String Club_Title, Club_Name, Club_Introduce, Club_Rule, Club_Harmoney, grade;
 
     public ModelClub() {}
 
-    public ModelClub(String club_Title, String club_Name, String club_Introduce, String club_Rule, String club_Harmoney) {
-        Club_Title = club_Title;
-        Club_Name = club_Name;
-        Club_Introduce = club_Introduce;
-        Club_Rule = club_Rule;
-        Club_Harmoney = club_Harmoney;
-    }
 
     public String getClub_Title() {
         return Club_Title;
@@ -19,6 +12,23 @@ public class ModelClub {
 
     public void setClub_Title(String club_Title) {
         Club_Title = club_Title;
+    }
+
+    public ModelClub(String club_Title, String club_Name, String club_Introduce, String club_Rule, String club_Harmoney, String grade) {
+        Club_Title = club_Title;
+        Club_Name = club_Name;
+        Club_Introduce = club_Introduce;
+        Club_Rule = club_Rule;
+        Club_Harmoney = club_Harmoney;
+        this.grade = grade;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getClub_Name() {

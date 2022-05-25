@@ -73,6 +73,7 @@ public class ClubFragment extends Fragment {
         Button btn = v.findViewById(R.id.button1);
         Button btn2 = v.findViewById(R.id.button2);
         Button btn3 = v.findViewById(R.id.button3);
+        Button btn4 = v.findViewById(R.id.button4);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +99,15 @@ public class ClubFragment extends Fragment {
                 startActivity(intent3);
             }
         });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(getActivity(), Myclub.class);
+                startActivity(intent3);
+            }
+        });
+
 
         return v;
     }
