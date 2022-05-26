@@ -12,6 +12,8 @@ import androidx.appcompat.widget.SearchView;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +21,10 @@ import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.firebaseapp.adapters.AdapterPosts;
 import com.blogspot.atifsoftwares.firebaseapp.adapters.AdapterUsers;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubApply;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelPost;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelUser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,33 +44,118 @@ public class Authentication extends AppCompatActivity {
     FirebaseAuth firebaseAuth; // 파이어베이스 객체생성
     String uid; // uid에 사용자 식별
     EditText show;
+    String club_name;
+    Button btn_apply;
+    String tmp;
+    String name, department_name;
+
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
+
+    final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+    //get path of database named "Users" containing users info
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
 
+        btn_apply = findViewById(R.id.btn_apply);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("uid가 되는지");
+        actionBar.setTitle("동아리 가입신청");
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance(); // 파이어베이스 객체 선언
 
         show = findViewById(R.id.showmethemoney);
+        club_name = show.getText().toString();
 
         //get current user
-        final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
-        //get path of database named "Users" containing users info
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
+        uid = fUser.getUid();
 
-        show.setText(fUser.getUid());
+        databaseReference.child("Resume_management").child(uid).child("name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                name= value;
+                if(value.length() <2) {
+                    Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+        databaseReference.child("Resume_management").child(uid).child("department_Number").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                department_name= value;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+
+        btn_apply.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                tmp = show.getText().toString();
+
+                databaseReference.child(tmp).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String value = dataSnapshot.getValue(String.class);
+
+                        if(tmp.length()<2) {
+                            Toast.makeText(getApplicationContext(), "동아리 이름을 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+                        }else{
+
+
+                            add_club_apply(tmp, name, department_name);
+
+
+                            Toast.makeText(getApplicationContext(), tmp +"동아리에 가입 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
+            }
+        });
 
 
 
 
+    }
+
+    public void add_club_apply(String club_name, String name, String department_number) {
 
 
+        ModelClubApply animal = new ModelClubApply(club_name, name, department_number);
+
+        //child는 해당 키 위치로 이동하는 함수입니다.
+        //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
+        databaseReference.child("동아리신청대기").child(club_name).child(department_number).setValue(animal);
 
     }
 }

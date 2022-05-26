@@ -24,6 +24,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,9 +39,11 @@ import android.content.DialogInterface;
 public class Myclub extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-    String d1, d2;
+
     String uid;
-    EditText dong1, dong2;
+    Button btn_manageent;
+    Button btn_people;
+    Button btn_chat;
     //DatabaseReference는 데이터베이스의 특정 위치로 연결하는 거라고 생각하면 된다.
     //현재 연결은 데이터베이스에만 딱 연결해놓고
     //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
@@ -50,28 +53,30 @@ public class Myclub extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myclub);
 
-        dong1 = findViewById(R.id.dong1);
-        dong2 = findViewById(R.id.dong2);
+        btn_manageent = findViewById(R.id.btn_management);
+        btn_people = findViewById(R.id.btn_people);
+        btn_chat = findViewById(R.id.btn_chat);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("동아리 권한 테스트");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
+
+
+
+
 
         final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
         uid = fUser.getUid();
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
         databaseReference.child("Club_Management").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ModelClub group = dataSnapshot.getValue(ModelClub.class);
+                actionBar.setTitle(group.getClub_Name());
 
 
-                d1 = group.getClub_Title();
-                dong1.setText(d1);
-                d2 = group.getGrade();
-                dong2.setText(d2);
 
 
             }
@@ -81,5 +86,32 @@ public class Myclub extends AppCompatActivity {
 
             }
         });
+
+        btn_manageent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubMake.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_people.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ClubPeople.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_chat.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClubMindPostFragment fragment5 = new ClubMindPostFragment();
+                FragmentTransaction ft5 = getSupportFragmentManager().beginTransaction();
+                ft5.replace(R.id.content, fragment5, "");
+                ft5.commit();
+            }
+        }));
+
     }
 }

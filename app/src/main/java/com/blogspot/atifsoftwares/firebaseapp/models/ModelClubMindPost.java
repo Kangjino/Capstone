@@ -1,24 +1,9 @@
 package com.blogspot.atifsoftwares.firebaseapp.models;
-/*생성자*/
-public class ModelMindpost {
 
-
+public class ModelClubMindPost {
     String mId, mDescr, mLikes, uUid, uEmail,uDp,uName ;
 
-
-    public ModelMindpost() {
-
-    }
-
-    public ModelMindpost(String mId, String mDescr, String mLikes, String uUid, String uEmail, String uDp, String uName) {
-        this.mId = mId;
-        this.mDescr = mDescr;
-        this.mLikes = mLikes;
-        this.uUid = uUid;
-        this.uEmail = uEmail;
-        this.uDp = uDp;
-        this.uName = uName;
-    }
+    public ModelClubMindPost(){};
 
     public String getmId() {
         return mId;
@@ -73,6 +58,16 @@ public class ModelMindpost {
     }
 
     public void setuName(String uName) {
+        this.uName = uName;
+    }
+
+    public ModelClubMindPost(String mId, String mDescr, String mLikes, String uUid, String uEmail, String uDp, String uName) {
+        this.mId = mId;
+        this.mDescr = mDescr;
+        this.mLikes = mLikes;
+        this.uUid = uUid;
+        this.uEmail = uEmail;
+        this.uDp = uDp;
         this.uName = uName;
     }
 }

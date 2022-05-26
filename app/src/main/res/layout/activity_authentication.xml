@@ -7,11 +7,26 @@
     android:orientation="vertical"
     tools:context=".Authentication">
 
+<TextView
+    android:text="가입을 원하는 동아리 이름 작성"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/showmethemoney"
-        android:hint="여기에 표시될거댜"
+        android:hint="여기에 작성해주세요"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/btn_apply"
+        android:text="가입신청"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:text="나가기"
+       android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

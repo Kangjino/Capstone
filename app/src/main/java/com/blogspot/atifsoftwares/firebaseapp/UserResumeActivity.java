@@ -108,42 +108,50 @@ public class UserResumeActivity extends AppCompatActivity {
 
 
 
-                    databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            ModelResume group = dataSnapshot.getValue(ModelResume.class);
+           databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   ModelResume group = dataSnapshot.getValue(ModelResume.class);
 
-                            //각각의 값 받아오기 get어쩌구 함수들은 ModelResume.class에서 지정한것
-                            Title2 = group.getTitle();
-                            Name2 = group.getName();
-                            Grade2 = group.getGrade();
-                            Department2 = group.getDepartment();
-                            Old2 = group.getOld();
-                            Department_Number2 = group.getDepartment_Number();
-                            Hobby2 = group.getHobby();
-                            Speciality2 = group.getSpeciality();
-                            Sex2 = group.getSex();
+                   if(!dataSnapshot.exists()) {
 
-                            Title.setText(Title2);
-                            Name.setText(Name2);
-                            Grade.setText(Grade2);
-                            Department.setText(Department2);
-                            Old.setText(Old2);
-                            Department_Number.setText(Department_Number2);
-                            Hobby.setText(Hobby2);
-                            Speciality.setText(Speciality2);
-                            Sex.setText(Sex2);
+                   }else {
 
 
-                                Toast.makeText(getApplicationContext(), "회원 이력서 불러오기가 성공적으로 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                       //각각의 값 받아오기 get어쩌구 함수들은 ModelResume.class에서 지정한것
+                       Title2 = group.getTitle();
+                       Name2 = group.getName();
+                       Grade2 = group.getGrade();
+                       Department2 = group.getDepartment();
+                       Old2 = group.getOld();
+                       Department_Number2 = group.getDepartment_Number();
+                       Hobby2 = group.getHobby();
+                       Speciality2 = group.getSpeciality();
+                       Sex2 = group.getSex();
 
-                        }
+                       Title.setText(Title2);
+                       Name.setText(Name2);
+                       Grade.setText(Grade2);
+                       Department.setText(Department2);
+                       Old.setText(Old2);
+                       Department_Number.setText(Department_Number2);
+                       Hobby.setText(Hobby2);
+                       Speciality.setText(Speciality2);
+                       Sex.setText(Sex2);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
-                        }
-                    });
+
+                       Toast.makeText(getApplicationContext(), "회원 이력서 불러오기가 성공적으로 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                   }
+
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+                   //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+               }
+           });
+
+
 
 
         // 나가기 버튼을 눌렀을때 홈 화면으로 이동

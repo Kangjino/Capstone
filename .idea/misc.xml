@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/drawable-anydpi/ic_chat_black.xml" value="0.339" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/drawable/bg_receiver.xml" value="0.2065" />
+        <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_add_club_mind_post.xml" value="0.3515625" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_add_mindpost.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_add_post.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_authentication.xml" value="0.36614583333333334" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_check_resume.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_home.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_make.xml" value="0.3010033444816054" />
+        <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_people.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_previous_select.xml" value="0.3515625" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_select.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_club_select2.xml" value="0.3515625" />
@@ -30,8 +32,11 @@
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_there_profile.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/activity_user_resume.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/cap.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/club_people_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fdtghshhhhs.xml" value="0.33" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_chat_list.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_club.xml" value="0.3392405063291139" />
+        <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_club_mind_post.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_mind_post.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/ks653/AndroidStudioProjects/anonymous-sns-application/app/src/main/res/layout/fragment_mind_post2.xml" value="0.36614583333333334" />

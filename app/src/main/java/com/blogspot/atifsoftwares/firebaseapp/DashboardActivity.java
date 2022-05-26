@@ -10,21 +10,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
 import com.blogspot.atifsoftwares.firebaseapp.notifications.Token;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class DashboardActivity extends AppCompatActivity {
 
     //firebase auth
     FirebaseAuth firebaseAuth;
-
+    String uid;
     ActionBar actionBar;
 
     String mUID;
+
+    final FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +117,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                         case R.id.nav_mindpost:
                             //users fragment transaction
-                            actionBar.setTitle("오늘의 한마디");//change actionbar title
+                            actionBar.setTitle("한마디");
                             MindPostFragment fragment5 = new MindPostFragment();
                             FragmentTransaction ft5 = getSupportFragmentManager().beginTransaction();
                             ft5.replace(R.id.content, fragment5, "");

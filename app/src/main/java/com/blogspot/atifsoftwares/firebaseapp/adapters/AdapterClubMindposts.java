@@ -3,10 +3,6 @@ package com.blogspot.atifsoftwares.firebaseapp.adapters;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,24 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blogspot.atifsoftwares.firebaseapp.AddPostActivity;
-import com.blogspot.atifsoftwares.firebaseapp.PostDetailActivity;
 import com.blogspot.atifsoftwares.firebaseapp.R;
 import com.blogspot.atifsoftwares.firebaseapp.ThereProfileActivity;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubMindPost;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelMindpost;
-import com.blogspot.atifsoftwares.firebaseapp.models.ModelPost;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,22 +30,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 
-public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHolder> {
+public class AdapterClubMindposts extends RecyclerView.Adapter<AdapterClubMindposts.MyHolder> {
 
 
     Context context;
-    List<ModelMindpost> MindpostList;
+    List<ModelClubMindPost> MindpostList;
 
     String myUid;
 
@@ -64,26 +47,26 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
 
     boolean mProcessLike=false;
 
-    public AdapterMindposts(Context context, List<ModelMindpost> MindpostList) {
+    public AdapterClubMindposts(Context context, List<ModelClubMindPost> MindpostList) {
         this.context = context;
         this.MindpostList = MindpostList;
         myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        likesRef = FirebaseDatabase.getInstance().getReference().child("MindLikes");
-        postsRef = FirebaseDatabase.getInstance().getReference().child("MindPosts");
+        likesRef = FirebaseDatabase.getInstance().getReference().child("MindLikes1");
+        postsRef = FirebaseDatabase.getInstance().getReference().child("MindPosts1");
     }
 
     @NonNull
     @Override
-    public AdapterMindposts.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public AdapterClubMindposts.MyHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         //inflate layout row_post.xml
         View view = LayoutInflater.from(context).inflate(R.layout.row_mindpost, viewGroup, false);
 
-        return new AdapterMindposts.MyHolder(view);
+        return new AdapterClubMindposts.MyHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final AdapterMindposts.MyHolder myHolder, final int i) {
+    public void onBindViewHolder(@NonNull final AdapterClubMindposts.MyHolder myHolder, final int i) {
         //get data
         final String uid = MindpostList.get(i).getuUid();
         String uEmail = MindpostList.get(i).getuEmail();
@@ -98,7 +81,7 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
         myHolder.pDescriptionTv.setText(pDescription);
         //myHolder.pLikesTv.setText(pLikes +" Likes"); //e.g. 100 Likes
         //set likes for each post
-        setLikes(myHolder, pId);
+        //setLikes(myHolder, pId);
 
         //set user dp
         /*try {
@@ -133,13 +116,13 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
                         if (mProcessLike){
                             if (dataSnapshot.child(postIde).hasChild(myUid)){
                                 //already liked, so remove like
-                                postsRef.child(postIde).child("pMindLikes").setValue(""+(pLikes-1));
+                                postsRef.child(postIde).child("pMindLikes1").setValue(""+(pLikes-1));
                                 likesRef.child(postIde).child(myUid).removeValue();
                                 mProcessLike = false;
                             }
                             else {
                                 // not liked, like it
-                                postsRef.child(postIde).child("pMindLikes").setValue(""+(pLikes+1));
+                                postsRef.child(postIde).child("pMindLikes1").setValue(""+(pLikes+1));
                                 likesRef.child(postIde).child(myUid).setValue("MindLiked"); //set any value
                                 mProcessLike = false;
                             }
@@ -179,7 +162,7 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
 
     }*/
 
-     //공감 버튼 리스너
+    //공감 버튼 리스너
     private void setLikes(final AdapterMindposts.MyHolder holder, final String postKey) {
         likesRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -217,9 +200,9 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
         if (uid.equals(myUid)){
             //add items in menu
             popupMenu.getMenu().add(Menu.NONE, 0, 0, "Delete");
-           /// popupMenu.getMenu().add(Menu.NONE, 1, 0, "View Detail");
+            /// popupMenu.getMenu().add(Menu.NONE, 1, 0, "View Detail");
         }
-       // popupMenu.getMenu().add(Menu.NONE, 2, 0, "View Detail");
+        // popupMenu.getMenu().add(Menu.NONE, 2, 0, "View Detail");
 
 
         //item click listener
@@ -249,9 +232,9 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
 
     }
 
-     //마인드 포스트 삭제하기
+    //마인드 포스트 삭제하기
     private void beginDelete(String pId) {
-            deleteMindPost(pId);
+        deleteMindPost(pId);
 
     }
 
@@ -261,7 +244,7 @@ public class AdapterMindposts extends RecyclerView.Adapter<AdapterMindposts.MyHo
         final ProgressDialog pd = new ProgressDialog(context);
         pd.setMessage("Deleting...");
 
-        Query fquery = FirebaseDatabase.getInstance().getReference("MindPosts").orderByChild("pId").equalTo(pId);
+        Query fquery = FirebaseDatabase.getInstance().getReference("MindPosts1").orderByChild("pId").equalTo(pId);
         fquery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

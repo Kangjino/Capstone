@@ -80,30 +80,30 @@ public class ClubMake extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ModelClub group = dataSnapshot.getValue(ModelClub.class);
 
+                if(dataSnapshot.exists()) {
+                    Club_Title2 = group.getClub_Title();
+                    Club_Title.setText(Club_Title2);
+                    Club_Name2 = group.getClub_Name();
+                    Club_Name.setText(Club_Name2);
+                    Club_Introduce2 = group.getClub_Introduce();
+                    Club_Introduce.setText(Club_Introduce2);
+                    Club_Rule2 = group.getClub_Rule();
+                    Club_Rule.setText(Club_Rule2);
+                    Club_Harmoney2 = group.getClub_Harmoney();
+                    Club_Harmoney.setText(Club_Harmoney2);
+                    if(grade.length() < group.getGrade().length()) {
 
-
-                Club_Title2 = group.getClub_Title();
-                Club_Title.setText(Club_Title2);
-                Club_Name2 = group.getClub_Name();
-                Club_Name.setText(Club_Name2);
-                Club_Introduce2 = group.getClub_Introduce();
-                Club_Introduce.setText(Club_Introduce2);
-                Club_Rule2 = group.getClub_Rule();
-                Club_Rule.setText(Club_Rule2);
-                Club_Harmoney2 = group.getClub_Harmoney();
-                Club_Harmoney.setText(Club_Harmoney2);
-                if(grade.length() < group.getGrade().length()) {
-
-                    if(group.getGrade()=="동아리 회장") {
-                        grade = "동아리 회장";
-                    }else if(group.getGrade() == "동아리 회장 인증중") {
-                        grade = "동아리 회장 인증중";
-                    }else {
-                        grade= "동아리원";
+                        if(group.getGrade()=="동아리 회장") {
+                            grade = "동아리 회장";
+                        }else if(group.getGrade() == "동아리 회장 인증중") {
+                            grade = "동아리 회장 인증중";
+                        }else {
+                            grade= "동아리원";
+                        }
                     }
-                }
 
-                Toast.makeText(getApplicationContext(), "동아리 개설 정보를 성공적으로 불러왔습니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "동아리 개설 정보를 성공적으로 불러왔습니다.", Toast.LENGTH_SHORT).show();
+                }
 
             }
 

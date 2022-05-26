@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class ClubPreviousSelect extends AppCompatActivity {
     ActionBar actionBar;
@@ -18,13 +20,12 @@ public class ClubPreviousSelect extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setTitle("동아리 분과 선택");
-        Button A, B , C, D , E, F;
+        ImageView A, B, C, D, E;
         A = findViewById(R.id.select_A);
         B= findViewById(R.id.select_B);
         C = findViewById(R.id.select_C);
         D = findViewById(R.id.select_D);
         E = findViewById(R.id.select_E);
-        F = findViewById(R.id.select_F);
 
         A.setOnClickListener(new View.OnClickListener() {
             @Override

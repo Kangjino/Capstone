@@ -22,8 +22,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blogspot.atifsoftwares.firebaseapp.adapters.AdapterClubMindposts;
 import com.blogspot.atifsoftwares.firebaseapp.adapters.AdapterMindposts;
 import com.blogspot.atifsoftwares.firebaseapp.adapters.AdapterPosts;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubMindPost;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelMindpost;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelPost;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,17 +47,17 @@ import java.util.TimerTask;
  * A simple {@link Fragment} subclass.
 
  */
-public class MindPostFragment extends Fragment {
+public class ClubMindPostFragment extends Fragment {
 
     //firebase auth
     FirebaseAuth firebaseAuth;
 
     RecyclerView recyclerView;
-    List<ModelMindpost> MindpostList;
-    AdapterMindposts adapterMindposts;
+    List<ModelClubMindPost> MindpostList; // models -> ModelClubMindPost를 가지고 만드는 리스트
+    AdapterClubMindposts adapterClubMindposts;
 
 
-    public MindPostFragment() {
+    public ClubMindPostFragment() {
         // Required empty public constructor
     }
 
@@ -64,7 +66,7 @@ public class MindPostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_mind_post, container, false);
+        View view =  inflater.inflate(R.layout.fragment_club_mind_post, container, false);
 
         //init
         firebaseAuth = FirebaseAuth.getInstance();
@@ -80,7 +82,7 @@ public class MindPostFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         //init post list
-        MindpostList = new ArrayList<ModelMindpost>();
+        MindpostList = new ArrayList<ModelClubMindPost>();
         loadMindPosts();
 
         return view;
@@ -89,22 +91,22 @@ public class MindPostFragment extends Fragment {
     //그동안의 마인드 포스트 로드
     private void loadMindPosts() {
         //path of all posts
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("MindPosts");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("MindPosts1");
         //get all data from this ref
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MindpostList.clear();
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    ModelMindpost modelMindpost = ds.getValue(ModelMindpost.class);
+                    ModelClubMindPost modelMindpost = ds.getValue(ModelClubMindPost.class);
 
                     MindpostList.add(modelMindpost);  //포스트잇 구성 내용을 리스트에 넣음
 
                     //포스트잇 한장을 생성시킴
-                    adapterMindposts = new AdapterMindposts(getActivity(), MindpostList);
+                    adapterClubMindposts = new AdapterClubMindposts(getActivity(), MindpostList);
 
                     //set adapter to recyclerview
-                    recyclerView.setAdapter(adapterMindposts);   //포스트잇 한장을 recyclerViewd에 넣음
+                    recyclerView.setAdapter(adapterClubMindposts);   //포스트잇 한장을 recyclerViewd에 넣음
                 }
             }
 
@@ -119,23 +121,23 @@ public class MindPostFragment extends Fragment {
     private void searchPosts(final String searchQuery){
 
         //path of all posts
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("MindPosts");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("MindPosts1");
         //get all data from this ref
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 MindpostList.clear();
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    ModelMindpost modelMindpost = ds.getValue(ModelMindpost.class);
+                    ModelClubMindPost modelMindpost = ds.getValue(ModelClubMindPost.class);
 
                     if (modelMindpost.getmDescr().toLowerCase().contains(searchQuery.toLowerCase())){
                         MindpostList.add(modelMindpost);
                     }
 
                     //adapter
-                    adapterMindposts = new AdapterMindposts(getActivity(), MindpostList);
+                    adapterClubMindposts = new AdapterClubMindposts(getActivity(), MindpostList);
                     //set adapter to recyclerview
-                    recyclerView.setAdapter(adapterMindposts);
+                    recyclerView.setAdapter(adapterClubMindposts);
                 }
             }
 
@@ -222,7 +224,7 @@ public class MindPostFragment extends Fragment {
             checkUserStatus();
         }
         else if (id == R.id.action_add_post){
-            startActivity(new Intent(getActivity(), AddMindpostActivity.class));
+            startActivity(new Intent(getActivity(), AddClubMindPostActivity.class));
         }
         else if (id==R.id.action_settings){
             //go to settings activity

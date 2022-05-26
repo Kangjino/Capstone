@@ -1,64 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ClubPreviousSelect">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/select_A"
-        android:text="봉사분과"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
-        android:id="@+id/select_B"
-        android:text="문예분과"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
+    <ImageView
         android:id="@+id/select_C"
-        android:text="종교분과"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_width="179dp"
+        android:layout_height="168dp"
+        app:layout_constraintEnd_toStartOf="@+id/select_E"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/christ" />
 
-    <Button
-        android:id="@+id/select_D"
-        android:text="수련분과"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <Button
+    <ImageView
         android:id="@+id/select_E"
-        android:text="학술분과"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/student" />
 
-    <Button
-        android:id="@+id/select_F"
-        android:text="학과 동아리"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    <ImageView
+        android:id="@+id/select_A"
+        android:layout_width="179dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toStartOf="@+id/select_B"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_C"
+        app:srcCompat="@drawable/violent" />
+
+    <ImageView
+        android:id="@+id/select_B"
+        android:layout_width="168dp"
+        android:layout_height="164dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_E"
+        app:srcCompat="@drawable/creative" />
+
+    <ImageView
+        android:id="@+id/select_D"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.933"
+        app:srcCompat="@drawable/pratice" />
 
     <TextView
-        android:textAlignment="center"
-        android:gravity="center"
-        android:text="검색하고싶은 동아리의 자세한 분과를\n 선택해주세요!"
-        android:layout_marginLeft="65dp"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_marginTop="50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:id="@+id/textView5"
+        android:layout_width="181dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="종교분과"
+        app:layout_constraintBottom_toTopOf="@+id/select_A"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_C"
+        app:layout_constraintVertical_bias="0.531" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="167dp"
+        android:layout_height="29dp"
+        android:text="학술분과"
+        app:layout_constraintBottom_toTopOf="@+id/select_B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/select_E" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="176dp"
+        android:layout_height="30dp"
+        android:text="봉사분과"
+        app:layout_constraintBottom_toTopOf="@+id/select_D"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_A"
+        app:layout_constraintVertical_bias="0.586" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="문예분과"
+        app:layout_constraintBottom_toTopOf="@+id/select_D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_B" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="176dp"
+        android:layout_height="36dp"
+        android:text="수련분과"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
