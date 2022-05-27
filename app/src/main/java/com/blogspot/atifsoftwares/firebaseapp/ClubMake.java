@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubApply;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,7 +49,7 @@ public class ClubMake extends AppCompatActivity {
 
     Button btn_back, btn_save, btn_load, btn_plz;
     EditText Club_Title, Club_Name, Club_Introduce, Club_Rule, Club_Harmoney;
-    String Club_Title2, Club_Name2, Club_Introduce2, Club_Rule2, Club_Harmoney2, uid;
+    String Club_Title2, Club_Name2, Club_Introduce2, Club_Rule2, Club_Harmoney2, uid, name, department_number;
     String grade = "비회원";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +116,34 @@ public class ClubMake extends AppCompatActivity {
         });
 
 
+
+
+        databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ModelResume group = dataSnapshot.getValue(ModelResume.class);
+
+                if(dataSnapshot.exists()) {
+
+                    name = group.getName();
+                    department_number = group.getDepartment_Number();
+
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+            }
+        });
+
+
+
+
+
+
+        //신청버튼을 눌렀을때
         btn_plz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,9 +151,9 @@ public class ClubMake extends AppCompatActivity {
                 addClub(Club_Title.getText().toString(), Club_Name.getText().toString(),Club_Introduce.getText().toString(),Club_Rule.getText().toString(),
                         Club_Harmoney.getText().toString(), grade);
 
+                add_club_apply(Club_Name.getText().toString(), name, department_number);
+                databaseReference.child("Resume_management").child(uid).child("dongari").setValue(Club_Name.getText().toString()); // 이력서에 동아리 이름 저장
                 Toast.makeText(getApplicationContext(), "동아리 개설 요청이 완료되었습니다.", Toast.LENGTH_LONG).show();
-
-
                 Intent intent2 = new Intent(getApplicationContext(), DashboardActivity.class);
                 startActivity(intent2);
 
@@ -173,5 +203,14 @@ public class ClubMake extends AppCompatActivity {
 
         databaseReference.child("Club_Management").child(uid).setValue(club);
     }
+
+    public void add_club_apply(String club_name, String name, String department_number) {
+
+
+        ModelClubApply animal = new ModelClubApply(club_name, name, department_number, "동아리 회장 신청중입니다");
+        databaseReference.child("동아리회원목록").child(club_name).child(department_number).setValue(animal);
+
+    }
+
 
 }

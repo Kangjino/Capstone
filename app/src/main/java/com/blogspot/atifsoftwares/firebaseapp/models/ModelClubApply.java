@@ -1,14 +1,23 @@
 package com.blogspot.atifsoftwares.firebaseapp.models;
 
 public class ModelClubApply {
-    String club_name, name, department_name;
+    String club_name, name, department_name, grade;
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 
     public ModelClubApply(){};
 
-    public ModelClubApply(String club_name, String name, String department_name) {
+    public ModelClubApply(String club_name, String name, String department_name, String grade) {
         this.club_name = club_name;
         this.name = name;
         this.department_name = department_name;
+        this.grade = grade;
     }
 
     public String getClub_name() {

@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubPeople;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +43,9 @@ public class ClubFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    String grade="";
     String uid;
+    String department_number="";
 
 
     public ClubFragment() {
@@ -121,26 +125,73 @@ public class ClubFragment extends Fragment {
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
                 uid = fUser.getUid();
 
-                databaseReference.child("Club_Management").child(uid).addValueEventListener(new ValueEventListener() {
+                databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ModelClub group = dataSnapshot.getValue(ModelClub.class);
+                        ModelResume group = dataSnapshot.getValue(ModelResume.class);
+                        grade = group.getDongari();
+                        department_number = group.getDepartment_Number();
 
-                        String grade = group.getGrade();
 
-                        if(grade.length() == 6) {
+
+
+
+
+                        databaseReference.child("동아리회원목록").child(grade).child(department_number).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                ModelClubPeople group = dataSnapshot.getValue(ModelClubPeople.class);
+
+                                String grade2 =  group.getGrade();
+
+
+
+                        if(grade2.length() == 6) {
+
                             Intent intent = new Intent(getActivity(), Myclub.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(getContext(), grade, Toast.LENGTH_SHORT).show();
                         }
+
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
+
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
+
+
+
+
+
+
                 });
+
+
+
+
+
+
+
 
             }
         });

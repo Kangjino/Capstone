@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
+import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -70,11 +71,11 @@ public class Myclub extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
-        databaseReference.child("Club_Management").child(uid).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ModelClub group = dataSnapshot.getValue(ModelClub.class);
-                actionBar.setTitle(group.getClub_Name());
+                ModelResume group = dataSnapshot.getValue(ModelResume.class);
+                actionBar.setTitle(group.getDongari());
 
 
 

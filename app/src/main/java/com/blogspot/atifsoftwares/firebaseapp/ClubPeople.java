@@ -32,7 +32,7 @@ public class ClubPeople extends AppCompatActivity {
 
     List<ModelClub> ClubPList;
 
-    public static String name="d", grade="d";
+    public static String club_name="d", name="d", grade="d", department_number="dd";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +71,42 @@ public class ClubPeople extends AppCompatActivity {
                 if(dataSnapshot.exists()) {
 
                     name = group.getName();
+                    department_number = group.getDepartment_Number();
+                    club_name = group.getDongari();
+
+
+
+                    databaseReference.child("동아리회원목록").child(club_name).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            ModelClubPeople group = dataSnapshot.getValue(ModelClubPeople.class);
+                            if(dataSnapshot.exists()) {
+                                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+
+                                    name = ""+ ds.child("name").getValue();
+                                    grade = ""+ds.child("grade").getValue();
+                                    department_number = (String) ds.child("department_number").getValue();
+
+                                    Toast.makeText(getApplicationContext(), grade, Toast.LENGTH_SHORT).show();
+                                    adapter.addItem(new ModelClubPeople(name, grade, department_number));
+                                }
+                            }
+                            recyclerView.setAdapter(adapter);
+                        }
+
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+                        }
+                    });
+
+
+
+
+
+
                 }
             }
 
@@ -81,30 +117,7 @@ public class ClubPeople extends AppCompatActivity {
             }
         });
 
-        databaseReference.child("Club_Management").child(uid).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ModelClub group = dataSnapshot.getValue(ModelClub.class);
 
-                if(dataSnapshot.exists()) {
-                    for (DataSnapshot ds: dataSnapshot.getChildren()) {
-                        grade = group.getGrade();
-                        adapter.addItem(new ModelClubPeople(name, grade));
-                    }
-                }
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
-            }
-        });
-
-
-
-
-        recyclerView.setAdapter(adapter);
 
     }
 }

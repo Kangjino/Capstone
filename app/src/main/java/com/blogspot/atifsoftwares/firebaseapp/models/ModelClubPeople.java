@@ -1,7 +1,15 @@
 package com.blogspot.atifsoftwares.firebaseapp.models;
 
 public class ModelClubPeople {
-    String department_number, Name;
+    String department_number, Name, grade;
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
 
     public ModelClubPeople(){}
 
@@ -22,8 +30,9 @@ public class ModelClubPeople {
         this.department_number = department_number;
     }
 
-    public ModelClubPeople(String name, String department_number) {
+    public ModelClubPeople(String name, String department_number, String grade) {
         Name = name;
         this.department_number = department_number;
+        this.grade = grade;
     }
 }

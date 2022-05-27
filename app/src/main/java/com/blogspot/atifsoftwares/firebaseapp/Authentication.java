@@ -126,7 +126,7 @@ public class Authentication extends AppCompatActivity {
 
 
                             add_club_apply(tmp, name, department_name);
-
+                            databaseReference.child("Resume_management").child(uid).child("dongari").setValue(tmp);
 
                             Toast.makeText(getApplicationContext(), tmp +"동아리에 가입 신청이 완료되었습니다.", Toast.LENGTH_SHORT).show();
                         }
@@ -151,11 +151,8 @@ public class Authentication extends AppCompatActivity {
     public void add_club_apply(String club_name, String name, String department_number) {
 
 
-        ModelClubApply animal = new ModelClubApply(club_name, name, department_number);
-
-        //child는 해당 키 위치로 이동하는 함수입니다.
-        //키가 없는데 "zoo"와 name같이 값을 지정한 경우 자동으로 생성합니다.
-        databaseReference.child("동아리신청대기").child(club_name).child(department_number).setValue(animal);
+        ModelClubApply animal = new ModelClubApply(club_name, name, department_number, "동아리 신청중입니다");
+        databaseReference.child("동아리회원목록").child(club_name).child(department_number).setValue(animal);
 
     }
 }

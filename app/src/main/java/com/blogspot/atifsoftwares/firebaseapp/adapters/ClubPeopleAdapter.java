@@ -38,17 +38,20 @@ public class ClubPeopleAdapter extends RecyclerView.Adapter<ClubPeopleAdapter.Vi
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         TextView textView2;
+        TextView textView3;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);
             textView2 = itemView.findViewById(R.id.textView2);
+            textView3 = itemView.findViewById(R.id.textView3);
         }
 
         public void setItem(ModelClubPeople item) {
             textView.setText(item.getName());
             textView2.setText(item.getDepartment_number());
+            textView3.setText(item.getGrade());
         }
 
     }

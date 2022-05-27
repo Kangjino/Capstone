@@ -18,6 +18,15 @@ public class ModelResume {
     String Department_Number;
     String Hobby;
     String uid;
+    String dongari;
+
+    public String getDongari() {
+        return dongari;
+    }
+
+    public void setDongari(String dongari) {
+        this.dongari = dongari;
+    }
 
     public String getUid() {
         return uid;
