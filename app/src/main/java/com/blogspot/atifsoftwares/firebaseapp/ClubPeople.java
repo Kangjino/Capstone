@@ -6,14 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.firebaseapp.adapters.ClubPeopleAdapter;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelClub;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelClubPeople;
-import com.blogspot.atifsoftwares.firebaseapp.models.ModelMindpost;
 import com.blogspot.atifsoftwares.firebaseapp.models.ModelResume;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,8 +31,11 @@ public class ClubPeople extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
 
+
     List<ModelClub> ClubPList;
 
+    ImageView img;
+    String grade2;
     public static String club_name="d", name="d", grade="d", department_number="dd";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class ClubPeople extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
 
+        img = findViewById(R.id.imageView);
 
 
 
@@ -86,12 +91,12 @@ public class ClubPeople extends AppCompatActivity {
                                     name = ""+ ds.child("name").getValue();
                                     grade = ""+ds.child("grade").getValue();
                                     department_number = (String) ds.child("department_number").getValue();
-
-                                    Toast.makeText(getApplicationContext(), grade, Toast.LENGTH_SHORT).show();
                                     adapter.addItem(new ModelClubPeople(name, grade, department_number));
                                 }
                             }
                             recyclerView.setAdapter(adapter);
+
+
                         }
 
 
@@ -116,6 +121,22 @@ public class ClubPeople extends AppCompatActivity {
                 //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
+
+
+        adapter.setOnItemClickListener(new OnClubPeopleItemClickListener() {
+            @Override
+            public void onItemClick(ClubPeopleAdapter.ViewHolder holder, View view, int position) {
+                ModelClubPeople item = adapter.getItem(position);
+                if(true) {
+                    Intent intent = new Intent(getApplicationContext(), ResumeSeeActivity.class);
+                    intent.putExtra("text", item.getName());
+                    startActivity(intent);
+                }
+                Toast.makeText(getApplicationContext(), "동아리 회장만 이력서를 열람할 수 있습니다.", Toast.LENGTH_SHORT);
+
+            }
+        });
+
 
 
 

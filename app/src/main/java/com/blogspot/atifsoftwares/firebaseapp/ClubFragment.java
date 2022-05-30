@@ -128,70 +128,56 @@ public class ClubFragment extends Fragment {
                 databaseReference.child("Resume_management").child(uid).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ModelResume group = dataSnapshot.getValue(ModelResume.class);
-                        grade = group.getDongari();
-                        department_number = group.getDepartment_Number();
+
+                            ModelResume group = dataSnapshot.getValue(ModelResume.class);
+                        if (dataSnapshot.exists()) {
+                            grade = group.getDongari();
+                            department_number = group.getDepartment_Number();
 
 
+                            databaseReference.child("동아리회원목록").child(grade).child(department_number).addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    ModelClubPeople group = dataSnapshot.getValue(ModelClubPeople.class);
+                                    if (dataSnapshot.exists()) {
+                                        String grade2 = group.getGrade();
 
 
+                                        if (grade2.length() == 6) {
+
+                                            Intent intent = new Intent(getActivity(), Myclub.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(getContext(), grade, Toast.LENGTH_SHORT).show();
+                                        }
 
 
-                        databaseReference.child("동아리회원목록").child(grade).child(department_number).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                ModelClubPeople group = dataSnapshot.getValue(ModelClubPeople.class);
-
-                                String grade2 =  group.getGrade();
+                                    } else {
+                                        Toast.makeText(getContext(), "내 동아리가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
 
 
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                        if(grade2.length() == 6) {
+                                }
+                            });
 
-                            Intent intent = new Intent(getActivity(), Myclub.class);
-                            startActivity(intent);
                         }else{
-                            Toast.makeText(getContext(), grade, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "내 동아리가 존재하지 않습니다.", Toast.LENGTH_SHORT).show();
                         }
 
 
-                            }
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled (@NonNull DatabaseError error){
 
-                            }
-                        });
-
-
-
-
-
-
-
-
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-
-
-
-
+                        }
 
 
                 });
-
-
-
-
-
-
-
 
             }
         });
