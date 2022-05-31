@@ -2,6 +2,7 @@ package com.blogspot.atifsoftwares.firebaseapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -31,7 +32,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 
@@ -46,7 +46,7 @@ public class UserResumeActivity extends AppCompatActivity {
     //키값(테이블 또는 속성)의 위치 까지는 들어가지는 않은 모습이다.
     private DatabaseReference databaseReference = database.getReference();
 
-    Button btn_back, btn_save, btn_load;
+    Button btn_back, btn_save, btn_show;
     EditText Title, Name, Grade, Department, Old, Department_Number, Hobby, Speciality, Sex;
     String Title2, Name2, Grade2, Department2, Old2, Department_Number2, Hobby2, Speciality2;
     String Sex2;
@@ -63,7 +63,7 @@ public class UserResumeActivity extends AppCompatActivity {
 
 
         btn_save = findViewById(R.id.btn_save);
-        btn_load = findViewById(R.id.btn_load);
+        btn_show = findViewById(R.id.btn_show);
         btn_back = findViewById(R.id.btn_back);
         Title = findViewById(R.id.Title);
         Name = findViewById(R.id.Name);
@@ -82,8 +82,30 @@ public class UserResumeActivity extends AppCompatActivity {
 
 
 
+        //버튼을 누르면 이력서 공개하기
+        btn_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                androidx.appcompat.app.AlertDialog.Builder builder = new AlertDialog.Builder(UserResumeActivity.this)
+                        .setTitle("이력서를 공개하시겠습니까?")
+                        .setMessage("*경고* 이력서 공개시 모든 동아리 회장이 이력서를 열람할 수 있게됩니다.")
+                        .setPositiveButton("이력서 공개", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) { // 긍정
+                                Toast.makeText(UserResumeActivity.this, "이력서를 공개하셨습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() { // 부정
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(UserResumeActivity.this, "취소하셨습니다", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                AlertDialog msgDlg = builder.create();
+                msgDlg.show();
 
-
+            }
+        });
 
 
 

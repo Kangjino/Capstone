@@ -4,104 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    >
 
+
+    " />
 
     <ImageButton
         android:id="@+id/button1"
-        android:layout_width="165dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="72dp"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.721"
+        android:layout_width="193dp"
+        android:background="@android:color/transparent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/activity" />
-
-    <ImageButton
-        android:id="@+id/button2"
-        android:layout_width="177dp"
-        android:layout_height="111dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/option" />
-
-    <ImageButton
-        android:id="@+id/button3"
-        android:layout_width="170dp"
-        android:layout_height="111dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/visit" />
+        app:layout_constraintVertical_bias="0.059"
+        app:srcCompat="@drawable/d1234" />
 
     <ImageButton
         android:id="@+id/button4"
-        android:layout_width="170dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="162dp"
+        android:background="@android:color/transparent"
+        android:layout_height="172dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search" />
+        app:layout_constraintVertical_bias="0.655"
+        app:srcCompat="@drawable/cc" />
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="198dp"
+        android:layout_height="202dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058"
+        app:srcCompat="@drawable/ddd111" />
+
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="195dp"
+        android:layout_height="167dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.018"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643"
+        app:srcCompat="@drawable/dddd22" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="158dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginBottom="32dp"
-        android:text="동아리 개설"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:layout_width="195dp"
+        android:layout_height="41dp"
+        android:text="     동아리 개설"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="168dp"
-        android:layout_height="29dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="88dp"
-        android:text="동아리 검색"
+        android:layout_width="179dp"
+        android:layout_height="36dp"
+        android:text="     동아리 검색"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="173dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="92dp"
-        android:text="동아리 구경"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.847"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="162dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="내동아리"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:layout_width="191dp"
+        android:layout_height="44dp"
+        android:text="     동아리 가입"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.581"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        app:layout_constraintVertical_bias="0.009" />
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798" />
 
-
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="171dp"
+        android:layout_height="43dp"
+        android:text="     내 동아리"
+        android:textSize="25dp"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.799" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginBottom="10dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginLeft="20dp"
+    android:background="@drawable/kowwww"
     tools:context=".ClubMake">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -208,5 +213,5 @@
         </LinearLayout>
     </ScrollView>
 
-
+    </LinearLayout>
 </LinearLayout>

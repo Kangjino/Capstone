@@ -100,9 +100,7 @@ public class ClubPeopleAdapter extends RecyclerView.Adapter<ClubPeopleAdapter.Vi
         return items.get(position);
     }
 
-    public ModelClubPeople setItem(int position, ModelClubPeople item) {
-        return items.set(position, item);
-    }
+
 
     public interface OnItemClickListener{
         void onItemClick(View v, int position); //뷰와 포지션값

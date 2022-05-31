@@ -5,42 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/aaaaai"
     tools:context=".Myclub">
     <Button
         android:id="@+id/btn_people"
         android:text="동아리 회원 목록"
+        android:backgroundTint="#C5E8E5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_management"
         android:text="동아리 이력서 관리"
+        android:backgroundTint="#C5E8E5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btn_chat"
-        android:text="동아리 채팅"
+        android:id="@+id/btn_show"
+        android:text="공개 이력서 열람"
+        android:backgroundTint="#C5E8E5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <Button
         android:text="동아리 방"
+        android:backgroundTint="#C5E8E5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <TextView
-        android:hint="여기에 동아리 이름 표시"
-        android:textStyle="bold"
-        android:textSize="20dp"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:hint="여기에 동아리 회장 이름 표시"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/click"
+            android:textSize="20dp"
+            android:text="댓글 :"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/text"
+            android:hint="                     댓글을 남겨보세요!                                               "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 
