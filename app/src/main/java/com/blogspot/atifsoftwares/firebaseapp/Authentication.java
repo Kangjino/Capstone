@@ -88,6 +88,8 @@ public class Authentication extends AppCompatActivity {
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), "이력서 작성을 완료해야 신청이 가능합니다.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(intent);
                 }
 
             }
